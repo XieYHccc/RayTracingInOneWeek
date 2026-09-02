@@ -4,15 +4,18 @@
 
 #include <iostream>
 
-bool hit_sphere(const point3& sphere_center, double radius, const ray& r)
+double hit_sphere(const point3& sphere_center, double radius, const ray& r)
 {
     vec3 oc = sphere_center - r.origin();
     auto a = dot(r.direction(), r.direction());
     auto b = -2 * dot(r.direction(), oc);
     auto c = dot(oc, oc) - (radius * radius);
-
     auto discriminant = b * b - 4 * a * c;
-    return (discriminant >= 0);
+    
+    if (discriminant < 0)
+        return -1;
+    else 
+        return (-b - std::sqrt(b*b - 4*a*c)) / (2.0*a);
 }
 
 color ray_color(const ray& ray)
