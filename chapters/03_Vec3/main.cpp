@@ -1,7 +1,4 @@
-#include "color.h"
-#include "vec3.h"
-
-#include <iostream>
+#include "rtweekend.h"
 
 int main()
 {
